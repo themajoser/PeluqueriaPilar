@@ -1,7 +1,7 @@
 <div class="sidebar" data-color="orange">
     <div class="logo">
         <a href="{{ route('dashboard') }}" class="simple-text logo-mini">
-            
+
         </a>
         <a href="{{ route('dashboard') }}" class="simple-text logo-normal">
             {{ config('app.name') }}
@@ -16,7 +16,7 @@
     <div class="sidebar-wrapper">
         <div class="user">
             <div class="photo">
-                <img src="/admin/img/default-avatar.png" />
+                <img src="/img/default-avatar.png" />
             </div>
             <div class="info">
                 <a data-toggle="collapse" href="#profile" class="collapsed">
@@ -51,16 +51,23 @@
                 <div class="collapse " id="products">
                     <ul class="nav">
                         <li class="{{ request()->is('products') ? 'active' : '' }}">
-                            <a href="">
+                            <a href=" {{ route('products.index') }}">
                                 <span class="sidebar-normal"><i class="fa fa-list"></i></span>
                                 <span class="sidebar-normal">Lista de productos</span>
                             </a>
                         </li>
-                        <li class="{{ request()->is('products/create') ? 'active' : '' }}">
-                            <a href="">
+                        <li >
+                            @if(request()->is('products/*'))
+                            <a href="{{ route('products.index', '#product') }}">
                                 <span class="sidebar-normal"><i class="fa fa-plus"></i></span>
                                 <span class="sidebar-normal">Nuevo producto</span>
                             </a>
+                            @else
+                                <a href="#" data-toggle="modal" data-target="#createProducts">
+                                    <span class="sidebar-normal"><i class="fa fa-plus"></i></span>
+                                    <span class="sidebar-normal">Nuevo producto</span>
+                                </a>
+                            @endif
                         </li>
                     </ul>
                 </div>

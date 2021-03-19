@@ -1,17 +1,20 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
 use App\Product;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class ProductController extends Controller
+class ProductsController extends Controller
 {
+    public $timestamps = true;
+
     public function index()
     {
-        $Products = Product::all();
+        $ProductsB = Product::all();
+        $Products= Product::updateState($ProductsB);
         return view('products.index', compact('Products'));
     }
 
@@ -26,9 +29,9 @@ class ProductController extends Controller
             'name.max' => 'Tamaño invalido (maximo 45 caracteres)'
         ]);
 
-        $Product = Product::create($request->all());
+        $product = Product::create($request->all());
 
-        return redirect()->route('products.edit', compact('Product'))->with('flash', 'El producto ha sido creado correctamente');
+        return redirect()->route('products.edit', compact("product"))->with('flash', 'El producto ha sido creado correctamente');
     }
 
     public function show(Product $Product)
@@ -38,6 +41,7 @@ class ProductController extends Controller
 
     public function edit(Product $Product)
     {
+
         $Product_relation = Product::get();
         return view('products.edit', compact('Product'));
     }
@@ -48,15 +52,13 @@ class ProductController extends Controller
 
         $this->validate($request, [
            'name' => 'required | max:45',
-           'description' => 'required | max:45',
+           'description' => 'required | max:100',
 
         ], [
             'name.required' => 'El nombre del producto es requerido',
             'name.max' => 'Tamaño invalido (maximo 45 caracteres)',
-            'description.max' => 'Tamaño de la descripcion invalido (maximo 100 caracteres)'
+            'min.required' => 'El mínimo stock del producto es requerido'
         ]);
-
-        $Product->updater = auth()->user()->id;
 
         $Product->update($request->all());
 
