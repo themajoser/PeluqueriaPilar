@@ -1,34 +1,29 @@
+
 @extends('layouts.app')
 
-@section('title', 'Productos | Ver')
+@section('title', 'Historial')
 
 @section('header')
-    Ver Producto
+    Historial
 @endsection
 
+
 @section('content')
+@include('movements.create',['products'=>$products,'operations'=>$operations])
     <div class="row">
         <div class="col-md-12">
-            <div class="card p-4">
+
+            <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title text-center">Producto: {{  $Product->name  }}</h4>
+                    <h4 class="card-title">Historial</h4>
                 </div>
                 <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="text-left">
-                                <p><span class="font-weight-bold">Nombre:</span> {{ $Product->name }}</p>
-                                <p><span class="font-weight-bold">Marca:</span> {{ $Product->brand }}</p>
-                                <p><span class="font-weight-bold">Mínimo de stock:</span> {{ $Product->min }}</p>
-                                <p><span class="font-weight-bold">Estado:</span> {{ $Product->state }} </p>
-                                <p><span class="font-weight-bold">Precio:</span> {{ $Product->price }} </p>
-                                <p><span class="font-weight-bold">Descripción:</span> {{ $Product->description }} </p>
-                                <p><span class="font-weight-bold">Stock:</span> {{ $Product->stock }} </p>
-                                <p><span class="font-weight-bold">Creado :</span>  {{$Product->created_at }}</p>
-                                <p><span class="font-weight-bold">Última actualización:</span> {{$Product->updated_at }}</p>
-                            </div>
-                        </div>
-                    </div>
+
+                    <form class="form-inline d-flex justify-content-center md-form form-sm mt-0">
+                      <i class="fas fa-search" aria-hidden="true"></i>
+                      <input class="form-control form-control-sm ml-3 w-75" aria-controls="movements-table" id="search" type="text" placeholder="Search"
+                        aria-label="Search">
+                    </form>
                     <div class="table-responsive">
                         <table id='movement-table' class="table">
                             <thead class="text-primary">
@@ -40,7 +35,7 @@
                             <th>Acciones</th>
                             </thead>
                             <tbody>
-                            @foreach($Product->movements as $movement)
+                            @foreach($Movements as $movement)
                                 <tr class="">
                                     <td class="text-center">{{ $movement->id }}</td>
                                     <td class="text-center">{{ $movement->product->name }}</td>
@@ -48,9 +43,6 @@
                                     <td class="text-center"> {{ $movement->stock_after   }}</td>
                                     <td class="text-center">{{ $movement->date_create }}</td>
                                     <td>
-                                        <a href="{{ route('movements.show', $movement) }}" rel="tooltip" class="btn btn-info btn-icon btn-sm">
-                                            <i class="now-ui-icons location_pin"></i>
-                                        </a>
                                         <a href="{{ route('movements.edit', $movement) }}" rel="tooltip" class="btn btn-success btn-icon btn-sm">
                                             <i class="now-ui-icons ui-2_settings-90"></i>
                                         </a>
@@ -67,9 +59,6 @@
                             </tbody>
                         </table>
                     </div>
-                </div>
-                <div class="text-center">
-                    <a href="{{ route('products.index') }}" class="btn btn-primary">Volver</a>
                 </div>
             </div>
         </div>

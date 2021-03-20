@@ -11,6 +11,7 @@ $factory->define(Product::class, function (Faker $faker) {
         'brand'=>$faker->regexify('[A-Za-z0-9]{20}'),
         'price' => $faker->randomFloat($nbMaxDecimals = 2, $min = 0, $max = 3),
         'description'=> $faker->text($maxNbChars = 100),
-        'min'=> $faker->randomDigit
+        'min'=> $faker->randomDigit,
+        'stock'=>  $faker->randomDigit
     ];
 });

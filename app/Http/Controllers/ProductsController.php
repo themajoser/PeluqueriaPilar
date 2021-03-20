@@ -6,6 +6,7 @@ use App\Product;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Movement;
 
 class ProductsController extends Controller
 {
@@ -13,8 +14,7 @@ class ProductsController extends Controller
 
     public function index()
     {
-        $ProductsB = Product::all();
-        $Products= Product::updateState($ProductsB);
+        $Products = Product::all();
         return view('products.index', compact('Products'));
     }
 
@@ -36,6 +36,8 @@ class ProductsController extends Controller
 
     public function show(Product $Product)
     {
+
+
         return view('products.show', compact('Product'));
     }
 

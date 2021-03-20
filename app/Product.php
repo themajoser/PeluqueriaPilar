@@ -29,6 +29,10 @@ class Product extends Model
             }
         });
     }
+    public function scopeGetById($query, $name)
+    {
+        return $query->where('id', $name)->first();
+    }
     public static function create(array $attributes = [])
     {
 
@@ -56,17 +60,17 @@ class Product extends Model
         return 'url';
     }
 
-    public static function updateState(Collection $products){
+    public static function updateState(Product $product){
 
-        foreach($products as $product){
+
             if($product->stock >= $product->min ){
                  $product->state="below";
             }
             if($product->stock <= $product->min ){
                 $product->state="above";
            }
-            $resultado[]=$product;
-        }
+            $resultado=$product;
+
 
         return $resultado;
     }

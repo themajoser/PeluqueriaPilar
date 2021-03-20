@@ -72,6 +72,33 @@
                     </ul>
                 </div>
             </li>
+            <li class="{{ request()->is('movements*') ? 'active' : '' }}">
+                <a data-toggle="collapse" href="#movements">
+                    <i class="fa fa-user"></i>
+                    <p>Movimiento
+                        <b class="caret"></b>
+                    </p>
+                </a>
+                <div class="collapse " id="movements">
+                    <ul class="nav">
+                        <li class="{{ request()->is('movements') ? 'active' : '' }}">
+                            <a href=" {{ route('movements.index') }}">
+                                <span class="sidebar-normal"><i class="fa fa-list"></i></span>
+                                <span class="sidebar-normal">Lista de movimientos</span>
+                            </a>
+                        </li>
+                       
+                        <li class="{{ request()->is('movements/create') ? 'active' : '' }}">
+                            <a href=" {{ route('movements.create') }}">
+                                <span class="sidebar-normal"><i class="fa fa-list"></i></span>
+                                <span class="sidebar-normal">Crear  movimiento</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </li>
+
         </ul>
     </div>
 </div>

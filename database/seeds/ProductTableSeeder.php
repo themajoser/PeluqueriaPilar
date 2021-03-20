@@ -15,6 +15,7 @@ class ProductTableSeeder extends Seeder
         $products = factory(Product::class,10)->make();
         $products->each(function($v) {
             $v->url = Str::slug($v->name);
+            $v= Product::updateState($v);
             $v->save();
         });
     }

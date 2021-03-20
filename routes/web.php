@@ -18,3 +18,4 @@ Route::get('/', function () {
 });
 Route::get('/', 'HomeController@index')->name('dashboard');
 Route::resource('products', 'ProductsController', ['except' => ['create']]);
+Route::resource('movements', 'MovementsController');
