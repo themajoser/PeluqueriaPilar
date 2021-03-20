@@ -42,27 +42,6 @@
 <script src="/js/plugins/moment.min.js"></script>
 <script src="/js/now-ui-dashboard.min.js?v=1.2.0" type="text/javascript"></script>
 <script src="/js/plugins/sweetalert2.min.js"></script>
-<script>
-    $(document).ready(function () {
-        let dtable = $('#logout');
-        dtable.on('click', function (e) {
-            e.preventDefault();
-            swal({
-                title: 'Cerrar sesion',
-                text: "¿Estas seguro que quieres salir?",
-                type: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'Cerrar sesion',
-                cancelButtonText: 'Cancelar',
-                confirmButtonClass: 'btn btn-primary',
-                cancelButtonClass: 'btn btn-info',
-                buttonsStyling: false
-            }).then(function () {
-                e.currentTarget.parentElement.submit();
-            });
-        });
-    });
-</script>
 @stack('scripts')
 </body>
 

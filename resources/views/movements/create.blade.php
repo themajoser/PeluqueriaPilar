@@ -74,5 +74,7 @@
             </div>
         </div>
     </div>
-
+@push('scripts')
+<script src="/js/plugins/bootstrap-selectpicker.js"></script>
+@endpush
     {{-- @endsection --}}

@@ -29,11 +29,12 @@ class MovementsController extends Controller
         $this->validate($request, [
             'product_id' => 'required | max:45',
             'operation'=>'required',
-            'quantity'=>'required'
+            'quantity'=>'required | min:0'
         ], [
             'product_id.required' => 'El producto requerido',
             'operation.required' => 'La operación es requerida',
             'quantity.required' => 'La cantidad es requerida',
+            'quantity.min'   => 'La cantidad no puede ser 0'
         ]);
 
         $Movement = Movement::create($request->all());

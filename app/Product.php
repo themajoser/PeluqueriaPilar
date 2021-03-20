@@ -60,18 +60,31 @@ class Product extends Model
         return 'url';
     }
 
-    public static function updateState(Product $product){
-
-
+    public static function updateState2(){
+            $products=Product::all();
+        foreach($products as $product){
             if($product->stock >= $product->min ){
                  $product->state="below";
             }
             if($product->stock <= $product->min ){
                 $product->state="above";
            }
-            $resultado=$product;
+          $product->save();
+        }
 
-
-        return $resultado;
     }
+
+    public static function updateState(Product $product){
+
+
+        if($product->stock >= $product->min ){
+             $product->state="below";
+        }
+        if($product->stock <= $product->min ){
+            $product->state="above";
+       }
+        return $product;
+    }
+
+
 }

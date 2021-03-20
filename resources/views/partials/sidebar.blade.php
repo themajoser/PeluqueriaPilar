@@ -43,7 +43,7 @@
             </li>
             <li class="{{ request()->is('products*') ? 'active' : '' }}">
                 <a data-toggle="collapse" href="#products">
-                    <i class="fa fa-user"></i>
+                    <i class="now-ui-icons design_bullet-list-67"></i>
                     <p>productos
                         <b class="caret"></b>
                     </p>
@@ -52,7 +52,7 @@
                     <ul class="nav">
                         <li class="{{ request()->is('products') ? 'active' : '' }}">
                             <a href=" {{ route('products.index') }}">
-                                <span class="sidebar-normal"><i class="fa fa-list"></i></span>
+                                <span class="sidebar-normal"><i class="now-ui-icons files_paper"></i></span>
                                 <span class="sidebar-normal">Lista de productos</span>
                             </a>
                         </li>
@@ -74,7 +74,7 @@
             </li>
             <li class="{{ request()->is('movements*') ? 'active' : '' }}">
                 <a data-toggle="collapse" href="#movements">
-                    <i class="fa fa-user"></i>
+                    <i class="now-ui-icons sport_user-run"></i>
                     <p>Movimiento
                         <b class="caret"></b>
                     </p>
@@ -85,13 +85,6 @@
                             <a href=" {{ route('movements.index') }}">
                                 <span class="sidebar-normal"><i class="fa fa-list"></i></span>
                                 <span class="sidebar-normal">Lista de movimientos</span>
-                            </a>
-                        </li>
-                       
-                        <li class="{{ request()->is('movements/create') ? 'active' : '' }}">
-                            <a href=" {{ route('movements.create') }}">
-                                <span class="sidebar-normal"><i class="fa fa-list"></i></span>
-                                <span class="sidebar-normal">Crear  movimiento</span>
                             </a>
                         </li>
 

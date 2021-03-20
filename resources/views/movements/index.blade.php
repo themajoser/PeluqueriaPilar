@@ -43,8 +43,8 @@
                                     <td class="text-center"> {{ $movement->stock_after   }}</td>
                                     <td class="text-center">{{ $movement->date_create }}</td>
                                     <td>
-                                        <a href="{{ route('movements.edit', $movement) }}" rel="tooltip" class="btn btn-success btn-icon btn-sm">
-                                            <i class="now-ui-icons ui-2_settings-90"></i>
+                                        <a href="{{ route('movements.show', $movement) }}" rel="tooltip" class="btn btn-info btn-icon btn-sm">
+                                            <i class="now-ui-icons location_pin"></i>
                                         </a>
                                         <form action="{{ route('movements.destroy', $movement) }}" method="POST" class="d-inline">
                                             @csrf

@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Product;
+use Carbon\Carbon;
+
 class Movement extends Model
 {
     use SoftDeletes;
@@ -22,7 +24,7 @@ class Movement extends Model
         return  $this->belongsTo(Product::class);
     }
 
-   
+
 
 
     public static function boot()
@@ -39,7 +41,9 @@ class Movement extends Model
             $Movement->product->save();
 
             $Movement->stock_after= $Movement->product->stock;
+            $Movement->date_create= Carbon::now();
             $Movement->save();
+
         });
         static::deleting(function ($Movement) {
             $product=Product::getById($Movement->product_id);
