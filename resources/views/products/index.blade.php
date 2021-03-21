@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Productos')
+@section('title',  'Peluquería Pilar | Productos')
 
 @section('header')
     Productos
@@ -23,7 +23,7 @@
                     <div class="table-responsive">
                         <table id='product-table' class="table">
                             <thead class="text-primary">
-                            <th class="text-center">Id</th>
+                            <th class="text-center">Creado:</th>
                             <th>Nombre</th>
                             <th class="text-center">Marca</th>
                             <th class="text-center">Estado</th>
@@ -34,7 +34,7 @@
                             <tbody>
                             @foreach($Products as $product)
                                 <tr class="">
-                                    <td class="text-center">{{ $product->id }}</td>
+                                    <td class="text-center">{{ $product->created_at }}</td>
                                     <td>{{ $product->name }}</td>
                                     <td class="text-center">{{ $product->brand }}</td>
                                     <td class="text-center {{ $product->state == "above"? "table-danger":"table-success"  }}">{{ $product->state == "above"? "Crítico" : "Suficiente" }}</td>
@@ -77,6 +77,7 @@
                 "ordering": true,
                 "info": true,
                 "autoWidth": false,
+                'order': [[ 0, "desc" ]]
             });
             $('#search').on( 'keyup', function () {
                         table.search( this.value ).draw();

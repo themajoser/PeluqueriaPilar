@@ -10,6 +10,7 @@ use Carbon\Carbon;
 class Movement extends Model
 {
     use SoftDeletes;
+
     public $timestamps = false;
 
    public  const OPERATIONS = [
@@ -62,5 +63,16 @@ class Movement extends Model
         });
 
 
+    }
+
+    public static function datesForGraficG(){
+        return Movement::query()->where('operation','=',"quit")->where('deleted_at','=',null)->whereDate('date_create','>=', Carbon::now()->subDays(7))->get()->groupBy(function($date) {
+            return Carbon::parse($date->date_create)->format('d-m-Y' );
+        });
+    }
+    public static function datesForGraficI(){
+        return Movement::query()->where('operation','=',"add")->where('deleted_at','=',null)->whereDate('date_create','>=', Carbon::now()->subDays(7))->get()->groupBy(function($date) {
+            return Carbon::parse($date->date_create)->format('d-m-Y' );
+        });
     }
 }

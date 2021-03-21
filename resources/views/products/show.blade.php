@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Productos | Ver')
+@section('title', 'Peluquería Pilar |Productos | Ver')
 
 @section('header')
     Ver Producto
@@ -32,21 +32,20 @@
                     <div class="table-responsive">
                         <table id='movement-table' class="table">
                             <thead class="text-primary">
-                            <th class="text-center">Id</th>
+                            <th class="text-center">Fecha</th>
                             <th class="text-center">Producto</th>
                             <th class="text-center">Operación</th>
                             <th class="text-center">Valor Posterior</th>
-                            <th class="text-center">Fecha</th>
+
                             <th>Acciones</th>
                             </thead>
                             <tbody>
                             @foreach($Product->movements as $movement)
                                 <tr class="">
-                                    <td class="text-center">{{ $movement->id }}</td>
+                                    <td class="text-center">{{ $movement->date_create }}</td>
                                     <td class="text-center">{{ $movement->product->name }}</td>
                                     <td class="text-center">{{ $movement->operation == "add" ? "+" : "-" }}{{ $movement->quantity }}</td>
                                     <td class="text-center"> {{ $movement->stock_after   }}</td>
-                                    <td class="text-center">{{ $movement->date_create }}</td>
                                     <td>
                                         <form action="{{ route('movements.destroy', $movement) }}" method="POST" class="d-inline">
                                             @csrf
@@ -81,6 +80,7 @@
                 "ordering": true,
                 "info": true,
                 "autoWidth": false,
+                'order': [[ 0, "desc" ]]
             });
             $('#search').on( 'keyup', function () {
                         table.search( this.value ).draw();

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Guia | Puntos de interés | Editar')
+@section('title', 'Peluquería Pilar |Guia | Puntos de interés | Editar')
 
 @section('header')
     Editar Punto de interés
@@ -37,21 +37,16 @@
 
                                 <div class="form-group has-label">
                                     <label for="min">Cantidad mínima de stock:</label>
-                                    <input type="number" name="min" step="1" class="form-control {{ $errors->has('min') ? 'is-invalid' : '' }}"
+                                    <input type="number" name="min" step="1" min=0 class="form-control {{ $errors->has('min') ? 'is-invalid' : '' }}"
                                            placeholder="Escribe la cantidad mínimo del producto" value="{{ old('min', $Product->min) }}">
                                     {!! $errors->first('min','<span class="form-text text-danger">:message</span>') !!}
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="form-group has-label">
-                                    <label for="min">Stock:</label>
-                                    <input type="number" name="stock" step="1" class="form-control {{ $errors->has('stock') ? 'is-invalid' : '' }}"
-                                           placeholder="Escribe la cantidad de stock del producto" value="{{ old('min', $Product->stock) }}">
-                                    {!! $errors->first('stock','<span class="form-text text-danger">:message</span>') !!}
-                                </div>
+
                                 <div class="form-group has-label">
                                     <label for="price">Precio:</label>
-                                    <input type="number" name="price"  min="0.00" step="0.01" class="form-control {{ $errors->has('price') ? 'is-invalid' : '' }}"
+                                    <input type="number" name="price"  min="0.01" step="0.01" class="form-control {{ $errors->has('price') ? 'is-invalid' : '' }}"
                                            placeholder="Escribe el precio del producto" value="{{ old('price', $Product->price) }}">
                                     {!! $errors->first('price','<span class="form-text text-danger">:message</span>') !!}
                                 </div>

@@ -4,7 +4,7 @@
 
         </a>
         <a href="{{ route('dashboard') }}" class="simple-text logo-normal">
-            {{ config('app.name') }}
+            ADMIN
         </a>
         <div class="navbar-minimize">
             <button id="minimizeSidebar" class="btn btn-simple btn-icon btn-neutral btn-round">
@@ -21,24 +21,19 @@
             <div class="info">
                 <a data-toggle="collapse" href="#profile" class="collapsed">
                 <span>
-                    <br>
-                <b class="caret"></b>
+                    Pilar Hernández Nicolás
+                
                 </span>
                 </a>
-                <div class="clearfix"></div>
-                <div class="collapse" id="profile">
-                    <ul class="nav">
-                        <li>
-                        </li>
-                    </ul>
-                </div>
+
+
             </div>
         </div>
         <ul class="nav">
             <li class="{{ request()->is('/') ? 'active' : '' }}">
                 <a href="{{ route('dashboard') }}">
                     <i class="now-ui-icons design_app"></i>
-                    <p>Dashboard</p>
+                    <p>Inicio</p>
                 </a>
             </li>
             <li class="{{ request()->is('products*') ? 'active' : '' }}">

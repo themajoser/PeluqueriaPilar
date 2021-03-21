@@ -1,6 +1,6 @@
 {{-- @extends('layouts.app')
 
-@section('title', 'Historial')
+@section('title', 'Peluquería Pilar | Historial')
 
 @section('header')
     Historial
@@ -27,7 +27,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group has-label">
                                             <label for="product_id">Producto:</label>
-                                            <select name="product_id" class="selectpicker form-control"
+                                            <select name="product_id"  data-live-search="true"  class="selectpicker form-control"
                                                 data-style="btn btn-info btn-round">
                                                 <option value="">Elige un producto</option>
                                                 @foreach ($products as $product)
@@ -42,7 +42,7 @@
 
                                         <div class="form-group has-label">
                                             <label for="min">Cantidad:</label>
-                                            <input type="number" name="quantity" step="1"
+                                            <input type="number" min=1 name="quantity" step="1"
                                                 class="form-control {{ $errors->has('quantity') ? 'is-invalid' : '' }}"
                                                 placeholder="Escribe la cantidad  del producto" value="">
                                             {!! $errors->first('quantity', '<span class="form-text text-danger">:message</span>') !!}
@@ -58,7 +58,7 @@
                                                     <option value="{{ $operation }}">{{ ($operation=="add"? 'Añadir': 'Quitar') }}</option>
                                                 @endforeach
                                             </select>
-                                            {!! $errors->first('product_id', '<span class="form-text text-danger">:message</span>') !!}
+                                            {!! $errors->first('operation', '<span class="form-text text-danger">:message</span>') !!}
                                         </div>
                                     </div>
 

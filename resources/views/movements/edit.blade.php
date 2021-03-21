@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Guia | Puntos de interés | Editar')
+@section('title', 'Peluquería Pilar |Guia | Puntos de interés | Editar')
 
 @section('header')
     Editar Punto de interés

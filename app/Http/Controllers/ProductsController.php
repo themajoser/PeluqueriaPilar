@@ -55,12 +55,15 @@ class ProductsController extends Controller
 
         $this->validate($request, [
            'name' => 'required | max:45',
-           'description' => 'required | max:100',
+           'description' => ' max:100',
+           'stock' => 'min:0'
 
         ], [
             'name.required' => 'El nombre del producto es requerido',
             'name.max' => 'Tamaño invalido (maximo 45 caracteres)',
-            'min.required' => 'El mínimo stock del producto es requerido'
+            'min.required' => 'El mínimo stock del producto es requerido',
+            'description.max'=> 'La descripción debe ser máximo 100 carácteres.',
+            'min.min' => 'El mínimo debe ser igual a 0 o mayor.'
         ]);
 
         $Product->update($request->all());

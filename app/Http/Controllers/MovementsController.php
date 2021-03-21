@@ -14,7 +14,7 @@ class MovementsController extends Controller
 
     public function index()
     {
-        $Movements = Movement::all()->reverse();
+        $Movements = Movement::all();
         $products= Product::all();
         $operations= Movement::OPERATIONS;
 
@@ -27,9 +27,10 @@ class MovementsController extends Controller
 
 
         $this->validate($request, [
-            'product_id' => 'required | max:45',
-            'operation'=>'required',
-            'quantity'=>'required | min:0'
+            'product_id' => 'required ',
+            'operation'=>'required ',
+            'quantity' => 'required | min:1'
+
         ], [
             'product_id.required' => 'El producto requerido',
             'operation.required' => 'La operación es requerida',
@@ -56,24 +57,6 @@ class MovementsController extends Controller
 
 
 
-    public function update(Request $request, Movement $Movement)
-    {
-
-
-        $this->validate($request, [
-           'name' => 'required | max:45',
-           'description' => 'required | max:100',
-
-        ], [
-            'name.required' => 'El nombre del Movemento es requerido',
-            'name.max' => 'Tamaño invalido (maximo 45 caracteres)',
-            'min.required' => 'El mínimo stock del Movemento es requerido'
-        ]);
-
-        $Movement->update($request->all());
-
-        return redirect()->route('movements.index', compact('Movement'))->with('flash', 'El Movemento ' . $Movement->name . ' ha sido actualizado correctamente');
-    }
 
     public function destroy(Movement $Movement)
     {

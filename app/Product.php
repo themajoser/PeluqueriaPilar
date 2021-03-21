@@ -28,6 +28,7 @@ class Product extends Model
                 $product->state="below";
             }
         });
+        
     }
     public function scopeGetById($query, $name)
     {
@@ -85,6 +86,8 @@ class Product extends Model
        }
         return $product;
     }
+
+
 
 
 }

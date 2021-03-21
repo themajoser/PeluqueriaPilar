@@ -22,7 +22,7 @@ class CreateMovementsTable extends Migration
             $table->enum('operation', array('add', 'quit'))->default('quit');
             $table->string('note', 100)->nullable();
             $table->integer('stock_after')->default(0);
-            $table->timestamp('date_create')->nullable();
+            $table->dateTime('date_create')->nullable();
             $table->softDeletes();
         });
     }
